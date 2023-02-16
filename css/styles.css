@@ -49,12 +49,14 @@ body {
   top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
+  text-align: center;
 }
 
 .heading-primary {
   color: #fff;
   text-transform: uppercase;
   backface-visibility: hidden;
+  margin-bottom: 60px;
 }
 
 .heading-primary-main {
@@ -65,7 +67,7 @@ body {
   letter-spacing: 35px;
   /*I can write this way*/
   animation-name: moveInLeft;
-  animation-duration: 2.5s;
+  animation-duration: 2s;
   animation-timing-function: ease-out;
 }
 
@@ -76,7 +78,7 @@ body {
   font-weight: 700;
   letter-spacing: 17.8px;
   /*or this way*/
-  animation: moveInRight 2s ease-in; 
+  animation: moveInRight 2.1s ease-in;
 }
 
 @keyframes moveInLeft {
@@ -84,12 +86,12 @@ body {
     opacity: 0;
     transform: translateX(-100px);
   }
-  80% {
+  /* 80% {
     transform: translateX(10px);
-  }
+  } */
   100% {
     opacity: 1;
-    transform: translate(0);
+    transform: translateX(0);
   }
 }
 @keyframes moveInRight {
@@ -97,11 +99,81 @@ body {
     opacity: 0;
     transform: translateX(100px);
   }
-  80% {
+  /* 80% {
     transform: translate(-10px)
-  }
+  } */
   100% {
     opacity: 1;
     transform: translateX(0);
   }
 }
+
+@keyframes moveInBotton {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  40%{
+    transform: translateY(-10px);
+  }
+  
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.btn:link,
+.btn:visited {
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 15px 40px;
+  display: inline-block;
+  border-radius: 100px;
+  transition: all .2s;
+  position: relative;
+}
+/*A página começa de cima para baixo, e da esquerda para direita, então se quisermos que o elemento suba, temos que definir um valor negativo*/
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+  transform: translateY(-1px);
+}
+
+.btn-white {
+  background-color: #fff;
+  color: #777;
+}
+
+.btn:after {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 100px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: all .4s;
+}
+
+.btn-white:after{
+  background-color: #fff;
+}
+
+
+.btn:hover::after {
+  transform: scaleX(1.4) scaleY(1.6);
+  opacity: 0;
+}
+
+.btn-animated {
+  animation: moveInBotton 1.6s ease-out .75s;
+  animation-fill-mode: backwards;
+}
+
